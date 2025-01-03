@@ -28,19 +28,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationManager authenticationManager;
 
     @Override
-    public User register(User request){
-        User user=new User();
+    public String register(User request){
 
         if(request.getPassword().equals(request.getConfirmPassword())){
+
+            User user=new User();
             user.setEmail(request.getEmail());
             user.setName(request.getName());
             user.setRole(request.getRole());
 
             user.setPassword(passwordEncoder.encode(request.getPassword()));
-            user=userRepository.save(user);
+            userRepository.save(user);
+
         }
 
-        return user;
+        return "user registered successfully";
     }
 
     @Override
