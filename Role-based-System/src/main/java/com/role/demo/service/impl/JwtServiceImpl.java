@@ -69,6 +69,7 @@ public class JwtServiceImpl implements JwtService {
         logger.info("Generating token for user: {}", user.getEmail());
         String token= Jwts.builder()
                 .subject(user.getEmail())
+                .claim("role", user.getRole())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis()+1*60*60*1000))
                 .signWith(getSigninKey())
