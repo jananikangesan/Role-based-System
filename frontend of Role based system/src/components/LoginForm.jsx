@@ -29,7 +29,8 @@ function LoginForm() {
                 .then((response) => {
                     const token = response.data.token;
                     console.log(token); 
-                    const role = extractRoleFromToken(token); 
+                    const extractValues = extractRoleFromToken(token);
+                    const role= extractValues.role;
                     if (role) {
                         localStorage.setItem('token', token);
                         redirectToDashboard(role);

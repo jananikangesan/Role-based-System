@@ -5,7 +5,7 @@ export function extractRoleFromToken(token) {
         console.log(token)
         const decoded = jwtDecode(token); 
         console.log("output of decoded jwt:",decoded)
-        return decoded.role; 
+        return decoded; 
     } catch (error) {
         console.error('Invalid token', error);
         return null;
