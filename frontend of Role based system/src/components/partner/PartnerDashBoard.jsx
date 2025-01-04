@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { extractRoleFromToken } from '../extractRoleFromToken';
 import CompanyRegistrationForm from './CompanyRegistrationForm';
+import Profile from './Profile';
 
 function PartnerDashBoard() {
   const navigate = useNavigate();
@@ -32,8 +33,8 @@ function PartnerDashBoard() {
     switch (activeMenu) {
       case 'RegisterCompany':
         return <CompanyRegistrationForm />;
-      case 'Settings':
-        return <h3>Here you can update your profile and settings.</h3>;
+      case 'Profile':
+        return <Profile/>;
       case 'Reports':
         return <h3>View your services and reports here.</h3>;
       default:
@@ -57,8 +58,8 @@ function PartnerDashBoard() {
             </li>
             <li className="nav-item">
               <button
-                className={`nav-link btn btn-link ${activeMenu === 'Settings' ? 'active' : ''}`}
-                onClick={() => setActiveMenu('Settings')}
+                className={`nav-link btn btn-link ${activeMenu === 'Profile' ? 'active' : ''}`}
+                onClick={() => setActiveMenu('Profile')}
               >
                 Profile
               </button>

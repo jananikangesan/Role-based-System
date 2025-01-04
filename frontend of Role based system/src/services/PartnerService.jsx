@@ -17,3 +17,20 @@ export const registerCompany = (company) => {
     }
   );
 }
+
+
+export const viewProfile=(email)=>{
+    const token = localStorage.getItem('token');  
+  
+  if (!token) {
+    throw new Error('No token found. User is not authenticated.');
+  }
+
+  return axios.get(`${URL}/profile/${email}`, 
+    {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    }
+  );
+}

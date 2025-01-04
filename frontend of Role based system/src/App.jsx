@@ -7,6 +7,7 @@ import AdminDashBoard from './components/admin/AdminDashBoard';
 import PartnerDashBoard from './components/partner/PartnerDashBoard';
 import { extractRoleFromToken } from './components/extractRoleFromToken';
 import CompanyRegistrationForm from './components/partner/CompanyRegistrationForm';
+import Profile from './components/partner/Profile';
 
 const ProtectedRoute = ({ component: Component, allowedRoles }) => {
   const token = localStorage.getItem('token');
@@ -61,6 +62,8 @@ function App() {
 
           <Route path="/partner-dashboard" element={<ProtectedRoute component={PartnerDashBoard} allowedRoles={['Partner']} />} />
           <Route path="/company-register" element={<ProtectedRoute component={CompanyRegistrationForm} allowedRoles={['Partner']} />} />
+          <Route path="/profile" element={<ProtectedRoute component={Profile} 
+          allowedRoles={['Partner']} />} />
 
 
           <Route path="/admin-dashboard" element={<ProtectedRoute component={AdminDashBoard} allowedRoles={['Super-Admin']} />} />
