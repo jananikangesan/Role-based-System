@@ -1,14 +1,15 @@
 package com.role.demo.service.impl;
 
-import com.role.demo.model.Company;
-import com.role.demo.model.ProfileResponse;
-import com.role.demo.model.User;
+import com.role.demo.model.*;
 import com.role.demo.repository.CompanyRepository;
+import com.role.demo.repository.PartnerServiceRepository;
 import com.role.demo.repository.UserRepository;
 import com.role.demo.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,9 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PartnerServiceRepository partnerServiceRepository;
 
     @Override
     public String registerCompany(Company company) {
@@ -48,5 +52,30 @@ public class CompanyServiceImpl implements CompanyService {
                 company.getAddress(),
                 company.getContactNumber()
         );
+    }
+
+    public List<CompanyServiceDTO> getCompanyAndServiceDetails() {
+
+        List<CompanyServiceDTO> result = new ArrayList<>();
+
+        List<Company> companies = companyRepository.findAll();
+
+        for (Company company : companies) {
+
+            List<PartnerService> services = partnerServiceRepository.findByPartnerEmail(company.getEmail());
+
+            for (PartnerService service : services) {
+
+                result.add(new CompanyServiceDTO(
+                        company.getCompanyName(),
+                        service.getPrice(),
+                        service.getDescription(),
+                        service.getServiceName()
+                ));
+            }
+        }
+
+        return result;
+
     }
 }

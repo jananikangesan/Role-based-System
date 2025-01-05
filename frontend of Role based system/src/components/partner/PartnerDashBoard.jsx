@@ -16,7 +16,7 @@ function PartnerDashBoard() {
     if (token) {
       try {
         const email = extractRoleFromToken(token).sub; 
-        setUserEmail(email || 'User'); 
+        setUserEmail(email); 
       } catch (error) {
         console.error('Error decoding token:', error);
       }

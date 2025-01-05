@@ -21,9 +21,9 @@ public class PartnerServiceController {
         return ResponseEntity.ok(partnerServiceService.createService(partnerService));
 
     }
-    @GetMapping("/getAll")
-    public ResponseEntity<List<PartnerService>> getService(){
-        return ResponseEntity.ok(partnerServiceService.getService());
+    @GetMapping("/getAll/{email}")
+    public ResponseEntity<List<PartnerService>> getService(@PathVariable String email){
+        return ResponseEntity.ok(partnerServiceService.getService(email));
     }
 
     @DeleteMapping("/delete/{id}")

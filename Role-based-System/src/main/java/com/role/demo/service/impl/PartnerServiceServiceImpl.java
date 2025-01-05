@@ -25,10 +25,10 @@ public class PartnerServiceServiceImpl implements PartnerServiceService {
     }
 
 
-    public List<PartnerService> getService() {
+    public List<PartnerService> getService(String email) {
         List<PartnerService> partnerServiceList;
         try {
-            partnerServiceList=partnerServiceRepository.findAll();
+            partnerServiceList=partnerServiceRepository.findByPartnerEmail(email);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

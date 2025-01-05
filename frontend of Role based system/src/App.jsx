@@ -11,6 +11,8 @@ import Profile from './components/partner/Profile';
 import ViewService from './components/partner/ViewService';
 import CreateService from './components/partner/CreateService';
 import EditService from './components/partner/EditService';
+import ViewUser from './components/admin/ViewUser';
+import ViewCompanyServices from './components/admin/ViewCompanyServices';
 
 const ProtectedRoute = ({ component: Component, allowedRoles }) => {
   const token = localStorage.getItem('token');
@@ -76,7 +78,8 @@ function App() {
 
 
           <Route path="/admin-dashboard" element={<ProtectedRoute component={AdminDashBoard} allowedRoles={['Super-Admin']} />} />
-          <Route path="/admin-dashboard" element={<ProtectedRoute component={AdminDashBoard} allowedRoles={['Super-Admin']} />} />
+          <Route path="/get-users" element={<ProtectedRoute component={ViewUser} allowedRoles={['Super-Admin']} />} />
+          <Route path="/get-companyAndServices" element={<ProtectedRoute component={ViewCompanyServices} allowedRoles={['Super-Admin']} />} />
         </Routes>
       </div>
     </Router>

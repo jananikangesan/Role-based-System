@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getServices, deleteService } from "../../services/PartnerService";
 import { useNavigate } from "react-router-dom";
+import { extractRoleFromToken } from "../extractRoleFromToken";
 
 function ViewService() {
   const [services, setServices] = useState([]);
@@ -14,8 +15,15 @@ function ViewService() {
   }, []);
 
   const fetchServices = () => {
-    getServices().then((response) => {
-        setServices(response.data);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError("User not authenticated. Please login again.");
+      return;
+    }
+    const email = extractRoleFromToken(token).sub; 
+
+    getServices(email).then((response) => {
+        setServices(response.data || []);
         setError("");
       }).catch(() => setError("Failed to fetch services"));
   };
@@ -42,31 +50,35 @@ function ViewService() {
       </div>
         {error && <div className="alert alert-danger">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Service Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {services.map((service, index) => (
-            <tr key={service.id}>
-              <td>{index + 1}</td>
-              <td>{service.serviceName}</td>
-              <td>{service.description}</td>
-              <td>{service.price}</td>
-              <td>
-                <button className="btn btn-primary btn-sm me-2" onClick={() => handleEdit(service.id)}>Edit</button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(service.id)} > Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        {services.length===0?(
+          <div className="text-center mt-4">No services available.</div>
+        ):(
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Service Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {services.map((service, index) => (
+                <tr key={service.id}>
+                  <td>{index + 1}</td>
+                  <td>{service.serviceName}</td>
+                  <td>{service.description}</td>
+                  <td>{service.price}</td>
+                  <td>
+                    <button className="btn btn-primary btn-sm me-2" onClick={() => handleEdit(service.id)}>Edit</button>
+                    <button className="btn btn-danger btn-sm" onClick={() => handleDelete(service.id)} > Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
     </div>
   );
 }

@@ -36,11 +36,13 @@ public class SecurityConfig {
                         .requestMatchers("/register", "/login").permitAll() // Allow signup and login without authentication
                         .requestMatchers("/company-register","/profile/{email}",
                                 "/partner-service/create",
-                                "/partner-service/getAll",
+                                "/partner-service/getAll/{email}",
                                 "/partner-service/delete/{id}",
                                 "/partner-service/update/{id}",
                                 "partner-service/get/{id}").hasRole("Partner")
-                        .requestMatchers("/user/getAll","/user/delete/{id}").hasRole("Super-Admin")
+                        .requestMatchers("/user/getAll",
+                                "/user/delete/{id}",
+                                "/companies-services").hasRole("Super-Admin")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session

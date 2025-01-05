@@ -51,14 +51,14 @@ export const createService=(service)=>{
   );
 }
 
-export const getServices=()=>{
+export const getServices=(email)=>{
   const token = localStorage.getItem('token');  
 
   if (!token) {
     throw new Error('No token found. User is not authenticated.');
   }
 
-  return axios.get(`${URL}/partner-service/getAll`, 
+  return axios.get(`${URL}/partner-service/getAll/${email}`, 
     {
       headers: {
         Authorization: `Bearer ${token}` 
@@ -109,6 +109,23 @@ export const getServiceById=(id)=>{
   }
 
   return axios.get(`${URL}/partner-service/get/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    }
+  );
+}
+
+
+export const getCompanyServices=()=>{
+  const token = localStorage.getItem('token');  
+
+  if (!token) {
+    throw new Error('No token found. User is not authenticated.');
+  }
+
+  return axios.get(`${URL}/companies-services`, 
     {
       headers: {
         Authorization: `Bearer ${token}` 

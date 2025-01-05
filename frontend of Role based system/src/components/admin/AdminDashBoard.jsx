@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { extractRoleFromToken } from '../extractRoleFromToken';
 import ViewUser from './ViewUser';
+import ViewCompanyServices from './ViewCompanyServices';
 
 
 function AdminDashBoard() {
@@ -15,7 +16,7 @@ function AdminDashBoard() {
     if (token) {
       try {
         const email = extractRoleFromToken(token).sub; 
-        setUserEmail(email || 'User'); 
+        setUserEmail(email); 
       } catch (error) {
         console.error('Error decoding token:', error);
       }
@@ -34,7 +35,7 @@ function AdminDashBoard() {
       case 'Users':
         return <ViewUser/>;
       case 'Companies':
-        return ;
+        return <ViewCompanyServices/>;
       case 'Bookings':
         return ;
       default:
