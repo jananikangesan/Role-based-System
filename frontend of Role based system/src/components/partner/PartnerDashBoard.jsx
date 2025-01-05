@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { extractRoleFromToken } from '../extractRoleFromToken';
 import CompanyRegistrationForm from './CompanyRegistrationForm';
 import Profile from './Profile';
+import ViewService from './ViewService';
 
 function PartnerDashBoard() {
   const navigate = useNavigate();
@@ -35,8 +36,8 @@ function PartnerDashBoard() {
         return <CompanyRegistrationForm />;
       case 'Profile':
         return <Profile/>;
-      case 'Reports':
-        return <h3>View your services and reports here.</h3>;
+      case 'Services':
+        return <ViewService/>;
       default:
         return <h3>Welcome to the Partner Dashboard!</h3>;
     }
@@ -66,8 +67,8 @@ function PartnerDashBoard() {
             </li>
             <li className="nav-item">
               <button
-                className={`nav-link btn btn-link ${activeMenu === 'Reports' ? 'active' : ''}`}
-                onClick={() => setActiveMenu('Reports')}
+                className={`nav-link btn btn-link ${activeMenu === 'Services' ? 'active' : ''}`}
+                onClick={() => setActiveMenu('Services')}
               >
                 Services
               </button>

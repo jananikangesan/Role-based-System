@@ -8,6 +8,9 @@ import PartnerDashBoard from './components/partner/PartnerDashBoard';
 import { extractRoleFromToken } from './components/extractRoleFromToken';
 import CompanyRegistrationForm from './components/partner/CompanyRegistrationForm';
 import Profile from './components/partner/Profile';
+import ViewService from './components/partner/ViewService';
+import CreateService from './components/partner/CreateService';
+import EditService from './components/partner/EditService';
 
 const ProtectedRoute = ({ component: Component, allowedRoles }) => {
   const token = localStorage.getItem('token');
@@ -63,6 +66,12 @@ function App() {
           <Route path="/partner-dashboard" element={<ProtectedRoute component={PartnerDashBoard} allowedRoles={['Partner']} />} />
           <Route path="/company-register" element={<ProtectedRoute component={CompanyRegistrationForm} allowedRoles={['Partner']} />} />
           <Route path="/profile" element={<ProtectedRoute component={Profile} 
+          allowedRoles={['Partner']} />} />
+          <Route path="/get-service" element={<ProtectedRoute component={ViewService} 
+          allowedRoles={['Partner']} />} />
+          <Route path="/create-service" element={<ProtectedRoute component={CreateService} 
+          allowedRoles={['Partner']} />} />
+          <Route path="/edit-service/:id" element={<ProtectedRoute component={EditService} 
           allowedRoles={['Partner']} />} />
 
 

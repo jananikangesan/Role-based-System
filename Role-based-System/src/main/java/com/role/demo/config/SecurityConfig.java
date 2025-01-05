@@ -34,7 +34,12 @@ public class SecurityConfig {
                 .cors(withDefaults()) // Allow cross-origin requests
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/register", "/login").permitAll() // Allow signup and login without authentication
-                        .requestMatchers("/company-register","/profile/{email}").hasRole("Partner")
+                        .requestMatchers("/company-register","/profile/{email}",
+                                "/partner-service/create",
+                                "/partner-service/getAll",
+                                "/partner-service/delete/{id}",
+                                "/partner-service/update/{id}",
+                                "partner-service/get/{id}").hasRole("Partner")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session

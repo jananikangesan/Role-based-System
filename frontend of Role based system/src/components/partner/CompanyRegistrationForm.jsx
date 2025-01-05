@@ -54,8 +54,7 @@ function CompanyRegistrationForm() {
     if (Object.keys(validationErrors).length === 0) {
         console.log(formData)
        
-        registerCompany(formData)
-        .then((response) => {
+        registerCompany(formData).then((response) => {
             console.log('Form Submitted:', response.data);
             setSuccessMessage('Company registered successfully!');
             setFormData({ companyName: '', address: '', contactNumber: '', email: formData.email });
