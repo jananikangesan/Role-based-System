@@ -76,6 +76,7 @@ function App() {
 
 
           <Route path="/admin-dashboard" element={<ProtectedRoute component={AdminDashBoard} allowedRoles={['Super-Admin']} />} />
+          <Route path="/admin-dashboard" element={<ProtectedRoute component={AdminDashBoard} allowedRoles={['Super-Admin']} />} />
         </Routes>
       </div>
     </Router>

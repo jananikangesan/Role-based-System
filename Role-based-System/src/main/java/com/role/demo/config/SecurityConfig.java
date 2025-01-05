@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 "/partner-service/delete/{id}",
                                 "/partner-service/update/{id}",
                                 "partner-service/get/{id}").hasRole("Partner")
+                        .requestMatchers("/user/getAll","/user/delete/{id}").hasRole("Super-Admin")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session
