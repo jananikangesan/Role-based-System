@@ -82,7 +82,7 @@ This is a role-based system that facilitates user authentication and role-specif
    mvn clean install
 3. Run the Spring Boot application:
    mvn spring-boot:run
-4. The backend will run at http://localhost:8082.
+4. The backend will run at http://localhost:8082
 
 ### Frontend Setup
 1. Navigate to the frontend directory.
@@ -90,7 +90,7 @@ This is a role-based system that facilitates user authentication and role-specif
     npm install 
 3. Start the React application:
    npm run dev 
-4. The frontend will run at http://localhost:5173.
+4. The frontend will run at http://localhost:5173
 
 ## Security
 - JWT is used for secure communication between the frontend and backend.
