@@ -11,4 +11,5 @@ public interface PartnerServiceService {
     public String deleteService(String id);
     public String updateService(String id, PartnerService partnerService);
     public PartnerService getServiceById(String id);
+    public List<PartnerService>  getAllService();
 }

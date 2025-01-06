@@ -13,6 +13,8 @@ import CreateService from './components/partner/CreateService';
 import EditService from './components/partner/EditService';
 import ViewUser from './components/admin/ViewUser';
 import ViewCompanyServices from './components/admin/ViewCompanyServices';
+import Home from './components/Home';
+import BrowseService from './components/client/BrowseService';
 
 const ProtectedRoute = ({ component: Component, allowedRoles }) => {
   const token = localStorage.getItem('token');
@@ -42,27 +44,14 @@ function App() {
       <div className="App">
         <Routes>
           {/* Home Page */}
-          <Route 
-            path="/" 
-            element={
-             
-                <div className="home-container">
-                  <div className="header">
-                    <ul className="nav-links">
-                      <li><Link to="/register">Sign up</Link></li>
-                      <li><Link to="/login">Log in</Link></li>
-                    </ul>
-                  </div>
-                  <h1 className="welcome-message">Welcome to the Role Based System</h1>
-                </div>
-              
-            } 
-          />
+          <Route path="/" element={<Home/>} />
           
           {/* Other Routes */}
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/client-dashboard" element={<ProtectedRoute component={ClientDashBoard}allowedRoles={['Client']} />} />
+          <Route path="/browse-service" element={<ProtectedRoute component={BrowseService}allowedRoles={['Client']} />} />
+
 
 
           <Route path="/partner-dashboard" element={<ProtectedRoute component={PartnerDashBoard} allowedRoles={['Partner']} />} />

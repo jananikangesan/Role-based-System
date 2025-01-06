@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { extractRoleFromToken } from '../extractRoleFromToken';
+import BrowseService from './BrowseService';
 
 
 
@@ -32,7 +33,7 @@ function ClientDashBoard() {
   const renderContent = () => {
     switch (activeMenu) {
       case 'Services':
-        return ;
+        return <BrowseService/>;
       case 'Book Services':
         return ;
       case 'Booking History':

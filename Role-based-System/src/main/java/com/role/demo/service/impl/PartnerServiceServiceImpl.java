@@ -76,4 +76,15 @@ public class PartnerServiceServiceImpl implements PartnerServiceService {
         PartnerService service = partnerServiceRepository.findById(id).orElse(null);
         return service;
     }
+
+    @Override
+    public List<PartnerService> getAllService() {
+        List<PartnerService> partnerServiceList;
+        try {
+            partnerServiceList=partnerServiceRepository.findAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return partnerServiceList;
+    }
 }

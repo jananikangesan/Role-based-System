@@ -40,6 +40,10 @@ public class PartnerServiceController {
         return ResponseEntity.ok(partnerServiceService.getServiceById(id));
     }
 
+    @GetMapping("/getAllService")
+    public ResponseEntity<List<PartnerService>> getAllService(){
+        return ResponseEntity.ok(partnerServiceService.getAllService());
+    }
 
 }
 

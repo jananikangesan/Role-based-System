@@ -134,6 +134,22 @@ export const getCompanyServices=()=>{
   );
 }
 
+export const getAllServices=()=>{
+  const token = localStorage.getItem('token');  
+
+  if (!token) {
+    throw new Error('No token found. User is not authenticated.');
+  }
+
+  return axios.get(`${URL}/partner-service/getAllService`, 
+    {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    }
+  );
+}
+
 
 
 
