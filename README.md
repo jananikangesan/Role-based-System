@@ -36,6 +36,7 @@ This is a role-based system that facilitates user authentication and role-specif
 
 ### 4. Client Dashboard
 - Clients have access to a dashboard tailored to their specific needs.
+-  Client can browse available services offered by partners.
 
 ### 5. Role-Based Authorization
 - Users can only access actions and data relevant to their roles:
