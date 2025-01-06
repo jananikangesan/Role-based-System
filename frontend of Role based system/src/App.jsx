@@ -53,7 +53,6 @@ function App() {
           <Route path="/browse-service" element={<ProtectedRoute component={BrowseService}allowedRoles={['Client']} />} />
 
 
-
           <Route path="/partner-dashboard" element={<ProtectedRoute component={PartnerDashBoard} allowedRoles={['Partner']} />} />
           <Route path="/company-register" element={<ProtectedRoute component={CompanyRegistrationForm} allowedRoles={['Partner']} />} />
           <Route path="/profile" element={<ProtectedRoute component={Profile} 

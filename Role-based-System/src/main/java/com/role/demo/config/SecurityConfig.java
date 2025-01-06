@@ -43,6 +43,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/getAll",
                                 "/user/delete/{id}",
                                 "/companies-services").hasRole("Super-Admin")
+                        .requestMatchers("/getAllService","/booking").hasRole("Client")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session
