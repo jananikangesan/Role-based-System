@@ -79,11 +79,16 @@ This is a role-based system that facilitates user authentication and role-specif
 
 ### Backend Setup
 1. Navigate to the backend directory.
-2. Build the project using Maven:
+2. Configure MongoDB:
+   * Ensure MongoDB is installed and running on your local machine or a server.
+   * Open the application.properties file located in src/main/resources/.
+   * Update the MongoDB URI to match your setup:
+        spring.data.mongodb.uri=mongodb://localhost:27017/role-based-system
+3. Build the project using Maven:
    mvn clean install
-3. Run the Spring Boot application:
+4. Run the Spring Boot application:
    mvn spring-boot:run
-4. The backend will run at http://localhost:8082
+5. The backend will run at http://localhost:8082
 
 ### Frontend Setup
 1. Navigate to the frontend directory.
